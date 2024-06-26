@@ -9,8 +9,8 @@ export default function Home() {
   const [search, setSearch] = useState('')
   const loadFoodItems = async () => {
     let response = await fetch("http://localhost:5000/api/auth/foodData", {
-      // credentials: 'include',
-      // Origin:"http://localhost:3000/login",
+      
+      
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -18,7 +18,8 @@ export default function Home() {
 
     });
     response = await response.json()
-    // console.log(response[1][0].CategoryName)
+    
+    
     setFoodItems(response[0])
     setFoodCat(response[1])
   }
@@ -43,13 +44,13 @@ export default function Home() {
               </div>
             </div>
             <div className="carousel-item active" >
-              <img src="https://source.unsplash.com/random/900x700/?burger" className="d-block w-100  " style={{ filter: "brightness(30%)" }} alt="..." />
+              <img src="https://i.ibb.co/jkKqBmP/pexels-sydney-troxell-1000-500.jpg" className="d-block w-100  " style={{ filter: "brightness(30%)" }} alt="..." />
             </div>
             <div className="carousel-item">
-              <img src="https://source.unsplash.com/random/900x700/?pastry" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
+              <img src="https://i.ibb.co/wCgjMjT/pexels-dzeninalukac-1583884-500-900.jpg" className=" d-block h-100 w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
             </div>
             <div className="carousel-item">
-              <img src="https://source.unsplash.com/random/900x700/?barbeque" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
+              <img src="https://i.ibb.co/zWMYfkM/bg-photo.jpg" className="d-block w-100 " style={{ filter: "brightness(30%)" }} alt="..." />
             </div>
           </div>
           <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -64,7 +65,7 @@ export default function Home() {
       </div>
       <div className='container'> {/* boootstrap is mobile first */}
         {
-          foodCat !== []
+          foodCat.length > 0
             ? foodCat.map((data) => {
               return (
                 // justify-content-center
@@ -73,7 +74,7 @@ export default function Home() {
                     {data.CategoryName}
                   </div>
                   <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }} />
-                  {foodItems !== [] ? foodItems.filter(
+                  {foodItems.length > 0 ? foodItems.filter(
                     (items) => (items.CategoryName === data.CategoryName) && (items.name.toLowerCase().includes(search.toLowerCase())))
                     .map(filterItems => {
                       return (
@@ -86,17 +87,10 @@ export default function Home() {
                 </div>
               )
             })
-            : ""}
+            : "Yoooo"}
       </div>
       <Footer />
     </div>
-
-
-
-
-
-
-
 
 
   )
