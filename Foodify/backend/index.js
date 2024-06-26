@@ -1,9 +1,11 @@
 
 global.foodData = require('./db')(function call(err, data, CatData) {
   // console.log(data)
+  // console.log(CatData);
+  // console.log("Yes");
   if(err) console.log(err);
   global.foodData = data;
-  global.foodCategory = CatData;
+  global.food_Category = CatData;
 })
 
 const express = require('express')
@@ -16,7 +18,7 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
-});
+}); 
 app.use(express.json())
 
 app.get('/', (req, res) => {
