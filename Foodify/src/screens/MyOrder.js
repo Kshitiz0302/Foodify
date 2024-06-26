@@ -22,25 +22,22 @@ export default function MyOrder() {
             let response = await res.json()
             await setorderData(response)
         })
+        // console.log(data);
 
 
+        
 
-        // await res.map((data)=>{
-        //    console.log(data)
-        // })
-
-
-    }
+    }   
 
     useEffect(() => {
-        fetchMyOrder()
+        fetchMyOrder() 
     }, [])
 
     return (
         <div>
             <div>
                 <Navbar />
-            </div>
+            </div> 
 
             <div className='container'>
                 <div className='row'>
@@ -58,6 +55,7 @@ export default function MyOrder() {
                                                         {data = arrayData.Order_date}
                                                         <hr />
                                                     </div> :
+                                                    
 
                                                         <div className='col-12 col-md-6 col-lg-3' >
                                                             <div className="card mt-3" style={{ width: "16rem", maxHeight: "360px" }}>
