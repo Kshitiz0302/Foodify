@@ -11,6 +11,9 @@ const jwtSecret = "HaHa"
 // var foodItems= require('../index').foodData;
 // require("../index")
 //Creating a user and storing data to MongoDB Atlas, No Login Requiered
+router.get('/hi', (req, res) => {
+  res.send('Hi!!!! ');
+})
 router.post('/createuser', [
     body('email').isEmail(),
     body('password').isLength({ min: 5 }),
