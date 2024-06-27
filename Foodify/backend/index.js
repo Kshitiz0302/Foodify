@@ -28,6 +28,6 @@ app.get('/', (req, res) => {
 app.use('/api/auth', require('./Routes/Auth'));
 
 app.listen(port, () => {
-  console.log(`Example app listening on https://render.com/docs/web-services#port-binding`)
+  console.log(`Example app listening on https://foodify-backend-4l21.onrender.com/`)
 })
 
