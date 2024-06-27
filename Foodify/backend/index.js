@@ -1,33 +1,34 @@
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+const port = 5000;
+
 
 global.foodData = require('./db')(function call(err, data, CatData) {
-  // console.log(data)
-  // console.log(CatData);
-  // console.log("Yes");
-  if(err) console.log(err);
+  if (err) console.log(err);
   global.foodData = data;
   global.food_Category = CatData;
-})
+});
 
-const express = require('express')
-const app = express()
-const port = 5000
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://foodify-frontend.onrender.com/");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-}); 
-app.use(express.json())
+const corsOptions = {
+  origin: 'https://foodify-frontend.onrender.com', // frontend URL
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+  res.send('Hello World!');
+});
 
 app.use('/api/auth', require('./Routes/Auth'));
 
+// Start the server
 app.listen(port, () => {
-  console.log(`Example app listening on https://foodify-backend-4l21.onrender.com/`)
-})
+  console.log(`Example app listening on https://foodify-backend-4l21.onrender.com/`);
+});
+
 
