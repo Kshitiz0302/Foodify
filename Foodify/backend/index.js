@@ -23,7 +23,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-
+app.get('/hi', (req, res) => {
+  res.send('Hi!!!! ');
+})
 app.use('/api/auth', require('./Routes/Auth'));
 
 // Start the server
