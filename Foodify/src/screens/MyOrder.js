@@ -8,7 +8,7 @@ export default function MyOrder() {
 
     const fetchMyOrder = async () => {
         console.log(localStorage.getItem('userEmail'))
-        await fetch("http://https://foodify-backend-4l21.onrender.com/api/auth/myOrderData", {
+        await fetch("https://foodify-backend-4l21.onrender.com/api/auth/myOrderData", {
             // credentials: 'include',
             // Origin:"http://localhost:3000/login",
             method: 'POST',
